@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">Ajouter un événement</div>
+          <div class="card-title">Ajouter un parking</div>
         </div>
         <div class="card-body">
           <div class="row">
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-6 col-lg-6">
                 <div class="form-group">
-                  <label for="email2">Localisation</label>
+                  <label for="email2">Nom du parking</label>
                   <input
                     type="email"
                     class="form-control"
@@ -52,9 +52,9 @@
             </div>
             <div class="col-md-6 col-lg-6">
                 <div class="form-group">
-                  <label for="date2">Start Date</label>
+                  <label for="date2">Localisation</label>
                   <input
-                    type="date"
+                    type="text"
                     class="form-control"
                     id="date2"
                     placeholder="Enter date"
@@ -67,11 +67,11 @@
             </div>
             <div class="col-md-6 col-lg-6">
                 <div class="form-group">
-                  <label for="date2">End date</label>
+                  <label for="date2">Total de place</label>
                   <input
-                    type="date"
+                    type="number"
                     class="form-control"
-                    id="date2"
+                    id="number"
                     placeholder="Enter date"
                   />
                   <small id="dateHelp2" class="form-text text-muted"
