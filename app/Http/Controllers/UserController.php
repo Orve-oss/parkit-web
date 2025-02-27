@@ -11,10 +11,10 @@ class UserController extends Controller
 {
     //
     public function index()
-{
-    $users = User::where('role', 'user')->get();
-    return view('users.index', compact('users'));
-}
+    {
+        $users = User::where('role', 'user')->get();
+        return view('users.index', compact('users'));
+    }
 
     public function login()
     {
@@ -67,26 +67,23 @@ class UserController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
-    public function register(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
+    public function register(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
+        ]);
 
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-    ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-    Auth::login($user);
+        return response()->json([
+            // 'message' => 'Utilisateur créé avec succès',
+            'token' => $user->createToken('mobile-token')->plainTextToken,
 
-    return response()->json([
-        'status' => 'success',
-        'message' => 'Registration successful',
-        'user' => $user,
-    ]);
-}
+        ], 201);
+    }
 }

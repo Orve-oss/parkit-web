@@ -17,9 +17,7 @@ Route::get('/welcome', function () {
 })->name('dashboard');
 
 /** Event*/
-Route::get('/index', function () {
-    return view('events.index');
-});
+Route::get('/index', [EventController::class, 'index'])->name('events.index');
 Route::get('/createevent', [EventController::class, 'create'])->name('eventcreate');
 Route::post('/storeevent', [EventController::class, 'store'])->name('eventstore');
 Route::get('/event', [EventController::class, 'index'])->name('event');
@@ -28,4 +26,5 @@ Route::get('/detail', [EventController::class, 'detail'])->name('eventdetail');
 /** Parking */
 Route::get('/parking', [ParkingController::class, 'index'])->name('parking');
 Route::get('/createparking', [ParkingController::class, 'create'])->name('parkingcreate');
+Route::post('/storeparking', [ParkingController::class, 'store'])->name('parkingstore');
 Route::get('/user', [UserController::class, 'index']);

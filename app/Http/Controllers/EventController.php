@@ -8,6 +8,21 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     //
+    public function index()
+    {
+        $events = Event::all();
+        return view('events.index', compact('events'));
+    }
+
+    public function event()
+    {
+        $events = Event::all();
+        return response()->json([
+            'status' => 200,
+            'events' => $events,
+
+        ]);
+    }
     public function create()
     {
         return view('events.create');
@@ -24,10 +39,9 @@ class EventController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'location' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -35,9 +49,9 @@ class EventController extends Controller
         $event->name = $request->name;
         $event->description = $request->description;
         $event->start_date = $request->start_date;
+        $event->location = $request->location;
         $event->end_date = $request->end_date;
-        $event->latitude = $request->latitude;
-        $event->longitude = $request->longitude;
+
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('events', 'public');
@@ -60,20 +74,19 @@ class EventController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
+            'location' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $event = Event::findOrFail($id);
         $event->name = $request->name;
         $event->description = $request->description;
+        $event->location = $request->location;
         $event->start_date = $request->start_date;
         $event->end_date = $request->end_date;
-        $event->latitude = $request->latitude;
-        $event->longitude = $request->longitude;
+
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('events', 'public');

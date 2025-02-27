@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Parking;
 use Illuminate\Http\Request;
 
@@ -10,12 +11,14 @@ class ParkingController extends Controller
     //
     public function index()
     {
+        $events = Event::all();
         $parkings = Parking::all();
-        return view('parkings.index', compact('parkings'));
+        return view('parkings.index', compact('parkings', 'events'));
     }
 
     public function create(){
-        return view('parkings.create');
+        $events = Event::all();
+        return view('parkings.create', compact('events'));
     }
 
     public function store(Request $request)

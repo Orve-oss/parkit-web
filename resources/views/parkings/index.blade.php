@@ -6,11 +6,10 @@
     <div class="col-md-6">
         <div class="form-group">
             <select class="form-select form-control" id="defaultSelect">
-              <option disabled>Choisir un événement </option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option disabled selected>Choisir un événement</option>
+              @foreach($events as $event)
+                <option value="{{ $event->id }}">{{ $event->name }}</option>
+              @endforeach
             </select>
         </div>
     </div>

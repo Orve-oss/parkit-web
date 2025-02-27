@@ -56,7 +56,7 @@
             <div class="collapse" id="base">
               <ul class="nav nav-collapse">
                 <li>
-                  <a href="/index">
+                  <a href="{{route('events.index')}}">
                     <span class="sub-item">Liste</span>
                   </a>
                 </li>

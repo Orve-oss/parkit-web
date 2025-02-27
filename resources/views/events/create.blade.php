@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<form action="{{route('eventstore')}}" method="post">
+<form action="{{route('eventstore')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-md-12">
@@ -22,25 +22,21 @@
                       placeholder="Entrez le nom"
                     />
                   </div>
-
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="form-group">
                         <label for="search-box">Localisation</label>
-                        <input type="text" id="search-box" class="form-control" placeholder="Rechercher un lieu" />
+                        <input type="text" class="form-control" name="location"
+                        placeholder="Rechercher un lieu" />
                         <small class="form-text text-muted">Cliquez sur la carte pour choisir l'emplacement.</small>
-                        <input type="hidden" id="latitude" name="latitude">
-                        <input type="hidden" id="longitude" name="longitude">
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
-
                     <div class="form-group">
                       <label for="comment">Description </label>
-                      <textarea class="form-control" name="description" id="comment" rows="5">
-                      </textarea>
+                      <textarea class="form-control" name="description" id="comment" rows="5"></textarea>
                     </div>
-
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="form-group">
@@ -50,39 +46,18 @@
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="form-group">
-                      <label for="start-date"
-                      >Start Date</label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        id="start-date"
-                        name="start_date"
-                        placeholder="Enter date"
-                      />
-                      <small id="dateHelp2" class="form-text text-muted"
-                        >The start date of the event.</small
-                      >
+                      <label for="start-date">Start Date</label>
+                      <input type="date" class="form-control" id="start-date" name="start_date" placeholder="Enter date">
+                      <small id="dateHelp2" class="form-text text-muted">The start date of the event.</small>
                     </div>
-
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="form-group">
-                      <label for="end-date"
-                      >End date</label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        id="end-date"
-                        name="end_date"
-                        placeholder="Enter date"
-                      />
-                      <small id="dateHelp2" class="form-text text-muted"
-                        >End date of the event</small
-                      >
+                      <label for="end-date">End date</label>
+                      <input type="date" class="form-control" id="end-date" name="end_date" placeholder="Enter date">
+                      <small id="dateHelp2" class="form-text text-muted">End date of the event</small>
                     </div>
-
                 </div>
-
               </div>
             </div>
 
@@ -141,6 +116,5 @@
 
     window.onload = initMap;
 </script>
-
 
 @endsection
