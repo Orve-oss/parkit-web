@@ -34,7 +34,7 @@
             <div class="collapse" id="dashboard">
               <ul class="nav nav-collapse">
                 <li>
-                  <a href="../demo1/index.html">
+                  <a href="/welcome">
                     <span class="sub-item">Tableau de bord</span>
                   </a>
                 </li>

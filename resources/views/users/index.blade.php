@@ -12,183 +12,50 @@
       <div class="card-body">
 
         <div class="table-responsive">
-          <table
-            id="add-row"
-            class="display table table-striped table-hover"
-          >
+          <table id="add-row" class="display table table-striped table-hover">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Date de création</th>
                 <th style="width: 10%">Action</th>
               </tr>
             </thead>
-            
-            <tbody>
-              <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>
-                  <div class="form-button-action">
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-primary btn-lg"
-                      data-original-title="Edit Task"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-danger"
-                      data-original-title="Remove"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>
-                  <div class="form-button-action">
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-primary btn-lg"
-                      data-original-title="Edit Task"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-danger"
-                      data-original-title="Remove"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>
-                  <div class="form-button-action">
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-primary btn-lg"
-                      data-original-title="Edit Task"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-danger"
-                      data-original-title="Remove"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>
-                  <div class="form-button-action">
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-primary btn-lg"
-                      data-original-title="Edit Task"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-danger"
-                      data-original-title="Remove"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>
-                  <div class="form-button-action">
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-primary btn-lg"
-                      data-original-title="Edit Task"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-danger"
-                      data-original-title="Remove"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>
-                  <div class="form-button-action">
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-primary btn-lg"
-                      data-original-title="Edit Task"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      type="button"
-                      data-bs-toggle="tooltip"
-                      title=""
-                      class="btn btn-link btn-danger"
-                      data-original-title="Remove"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
 
+            <tbody>
+              @forelse($users as $user)
+              <tr>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->created_at->format('d/m/Y') }}</td>
+                <td>
+                  <div class="form-button-action">
+                    <button
+                      type="button"
+                      data-bs-toggle="tooltip"
+                      title="Edit"
+                      class="btn btn-link btn-primary btn-lg"
+                      data-original-title="Edit Task"
+                    >
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button
+                      type="button"
+                      data-bs-toggle="tooltip"
+                      title="Remove"
+                      class="btn btn-link btn-danger"
+                      data-original-title="Remove"
+                    >
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              @empty
+              <tr>
+                <td colspan="4" class="text-center">Pas de clients</td>
+              </tr>
+              @endforelse
             </tbody>
           </table>
         </div>

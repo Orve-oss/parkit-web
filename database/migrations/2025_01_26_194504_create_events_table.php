@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');

@@ -2,20 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4">
-        <a href="{{route('eventcreate')}}">
-            <div class="card card-info card-annoucement card-round">
-                <div class="card-body text-center">
-                  <div class="card-opening">New event</div>
-                  <div class="card-desc">
-                    <i class="fa fa-plus"></i>
-                  </div>
-
-                </div>
-              </div>
-        </a>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <a href="#">
             <div class="card card-post card-round">
                 <img
@@ -38,23 +25,28 @@
                   <p class="card-text">
                     End date: 08 Decembre 2025
                   </p>
-                  <a href="/detail" class="btn btn-primary btn-rounded btn-sm"
+                  <a href="#" class="btn btn-primary btn-rounded btn-sm"
                     >Read More</a
                   >
                 </div>
               </div>
         </a>
     </div>
-    {{-- <div class="col-md-4">
-      <div class="card card-info card-annoucement card-round">
-        <div class="card-body text-center">
-          <div class="card-opening">Welcome Rian,</div>
-          <div class="card-desc">
-            Aucun evenement ajouté
-          </div>
+    <div class="col-md-4">
+        <a href="#">
+            <div class="card card-info card-annoucement card-round">
+                <div class="card-body text-center">
+                  <div class="card-opening">New event</div>
+                  <div class="card-desc">
+                    <i class="fa fa-plus"></i>
+                  </div>
 
-        </div>
-      </div>
-    </div> --}}
+                </div>
+              </div>
+        </a>
+    </div>
 </div>
+
+
+
 @endsection

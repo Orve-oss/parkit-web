@@ -5,13 +5,27 @@ use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+/**User */
+Route::get('/', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'loginpage'])->name('login');
+Route::get('/welcome', function () {
     return view('welcome');
-});
+})->name('dashboard');
+
+/** Event*/
 Route::get('/index', function () {
     return view('events.index');
 });
 Route::get('/createevent', [EventController::class, 'create'])->name('eventcreate');
+Route::post('/storeevent', [EventController::class, 'store'])->name('eventstore');
+Route::get('/event', [EventController::class, 'index'])->name('event');
+Route::get('/detail', [EventController::class, 'detail'])->name('eventdetail');
+
+/** Parking */
 Route::get('/parking', [ParkingController::class, 'index'])->name('parking');
 Route::get('/createparking', [ParkingController::class, 'create'])->name('parkingcreate');
 Route::get('/user', [UserController::class, 'index']);
