@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('location');
             $table->string('name');
+            $table->string('description');
             $table->double('price');
             $table->double('total_place');
             $table->foreignId('user_id')->nullable()->constrained('users', 'id');

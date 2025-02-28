@@ -32,6 +32,7 @@ class ParkingController extends Controller
 
         $parking = new Parking();
         $parking->event_id = $request->event_id;
+        $parking->location = $request->location;
         $parking->name = $request->name;
         $parking->description = $request->description;
         $parking->total_place = $request->total_place;

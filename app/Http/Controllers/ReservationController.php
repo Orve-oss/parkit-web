@@ -16,19 +16,20 @@ class ReservationController extends Controller
         $request->validate([
             'status' => 'required|string',
             'price' => 'required|numeric',
-            'user_id' => 'required|exists:users,id',
-            'event_id' => 'required|exists:events,id',
-            'parking_id' => 'required|exists:parkings,id',
+            'user' => 'required|exists:users,id',
+            'event' => 'required|exists:events,id',
         ]);
 
         $reservation = new Reservation();
         $reservation->status = $request->status;
         $reservation->price = $request->price;
-        $reservation->user_id = $request->user_id;
-        $reservation->event_id = $request->event_id;
-        $reservation->parking_id = $request->parking_id;
+        $reservation->user = $request->user;
+        $reservation->event = $request->event;
         $reservation->save();
 
-        return redirect()->route('reservations.index')->with('success', 'Reservation created successfully.');
+        return response()->json([
+            'status' => 200,
+            'message' => 'Reservation created successfully.',
+        ]);
     }
 }

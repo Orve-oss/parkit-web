@@ -43,30 +43,37 @@ class UserController extends Controller
         ]);
     }
     public function loginuser(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+{
+    $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            $user = Auth::user();
-            if ($user->role == 'user') {
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'Login successful',
-                    'user' => $user,
-                ]);
-            } else {
-                Auth::logout();
-                return back()->withErrors([
-                    'email' => 'You do not have the necessary permissions to access this area.',
-                ]);
-            }
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($user->role == 'user') {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Login successful',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ],
+            ]);
+        } else {
+            Auth::logout();
+            return response()->json([
+                'status' => 403,
+                'message' => 'You do not have the necessary permissions to access this area.',
+            ], 403);
         }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
     }
+
+    return response()->json([
+        'status' => 401,
+        'message' => 'The provided credentials do not match our records.',
+    ], 401);
+}
+
     public function register(Request $request) {
         $request->validate([
             'name' => 'required|string|max:255',

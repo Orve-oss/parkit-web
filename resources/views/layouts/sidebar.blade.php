@@ -78,7 +78,7 @@
             <div class="collapse" id="sidebarLayouts">
               <ul class="nav nav-collapse">
                 <li>
-                  <a href="{{route('parking')}}">
+                  <a href="{{route('parkings.index')}}">
                     <span class="sub-item">Liste des parkings</span>
                   </a>
                 </li>
@@ -113,19 +113,19 @@
           </li>
           <li class="nav-item">
             <a data-bs-toggle="collapse" href="#sidebarLayouts">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-billet"></i>
               <p>Reservations</p>
               <span class="caret"></span>
             </a>
             <div class="collapse" id="sidebarLayouts">
               <ul class="nav nav-collapse">
                 <li>
-                  <a href="/user">
-                    <span class="sub-item">Liste des reservations</span>
+                    <a href="{{route('reservations.index')}}">
+                        <span class="sub-item">Liste des reservations</span>
                   </a>
                 </li>
                 <li>
-                  <a href="icon-menu.html">
+                  <a href="{{route('reservations.index')}}">
                     <span class="sub-item">Icon Menu</span>
                   </a>
                 </li>

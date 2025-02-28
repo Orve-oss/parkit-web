@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,10 @@ Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/detail', [EventController::class, 'detail'])->name('eventdetail');
 
 /** Parking */
-Route::get('/parking', [ParkingController::class, 'index'])->name('parking');
+Route::get('/parking', [ParkingController::class, 'index'])->name('parkings.index');
 Route::get('/createparking', [ParkingController::class, 'create'])->name('parkingcreate');
 Route::post('/storeparking', [ParkingController::class, 'store'])->name('parkingstore');
 Route::get('/user', [UserController::class, 'index']);
+
+/**Reservation */
+Route::get('/reservation', [ReservationController::class, 'index'])->name('reservations.index');

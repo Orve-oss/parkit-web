@@ -16,13 +16,23 @@ class EventController extends Controller
 
     public function event()
     {
-        $events = Event::all();
+        $events = Event::all()->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'name' => $event->name,
+                'start_date' => $event->start_date->format('Y-m-d'), // Format correct
+                'location' => $event->location,
+                'image' => url('storage/' . $event->image), // Générer un chemin absolu
+                'is_free' => $event->is_free,
+            ];
+        });
+
         return response()->json([
             'status' => 200,
             'events' => $events,
-
         ]);
     }
+
     public function create()
     {
         return view('events.create');

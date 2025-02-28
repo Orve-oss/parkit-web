@@ -50,7 +50,7 @@
                         id="location"
                         name="location"
                         placeholder="Entrez la localisation"
-                        required
+                        
                       />
                     </div>
                 </div>
