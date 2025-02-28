@@ -4,6 +4,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -13,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 /**User */
 Route::get('/', [UserController::class, 'login']);
 Route::post('/login', [UserController::class, 'loginpage'])->name('login');
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('dashboard');
+Route::get('/welcome', [WelcomeController::class, 'index'])->name('dashboard');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
 
 /** Event*/
 Route::get('/index', [EventController::class, 'index'])->name('events.index');
