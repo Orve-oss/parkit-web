@@ -66,7 +66,12 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::findOrFail($id);
-        return view('events.show', compact('event'));
+        // return view('events.show', compact('event'));
+        return response()->json([
+            'status' => 200,
+            'event' => $event,
+
+        ]);
     }
 
     public function update(Request $request, $id)

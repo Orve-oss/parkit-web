@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->string('status');
-            $table->double('price');
-            $table->double('nbre_place');
+            $table->double('price')->default(0);
             $table->foreignId('user')->constrained('users', 'id');
             $table->foreignId('event')->constrained('events', 'id');
             $table->foreignId('parking')->constrained('parkings', 'id');

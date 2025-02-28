@@ -35,7 +35,7 @@
                         <h5><b>{{ $parking->name }}</b></h5>
                         <p class="text-muted">{{ $parking->event->name }}</p>
                     </div>
-                    <h3 class="text-info fw-bold">{{ $parking->capacity }}</h3>
+                    <h3 class="text-info fw-bold">{{ $parking->total_place }}</h3>
                 </div>
                 <div class="progress progress-sm">
                     <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>

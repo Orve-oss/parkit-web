@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('name');
             $table->double('price');
+            $table->double('total_place');
             $table->foreignId('user_id')->nullable()->constrained('users', 'id');
             $table->timestamps();
         });
